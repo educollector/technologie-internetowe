@@ -1,8 +1,14 @@
 package com.ola;
 
+import com.ola.model.Person;
+import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+import spark.template.thymeleaf.ThymeleafTemplateEngine;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -26,7 +32,6 @@ public class Main {
 
     static final String[] PORADYMAN = {
             "Porada man nr. 1",
-            "Porada man nr. 2",
             "Porada man nr. 3",
             "Porada man nr. 4",
             "Porada man nr. 5",
@@ -37,10 +42,22 @@ public class Main {
 
     public static void main(String[] args) {
 
+        get("/thymeleaf", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            model.put("person", new Person("Foobar"));
+
+            return new ModelAndView(model, "hello");
+        }, new ThymeleafTemplateEngine());
+
         get("/hello", (req, res) -> "Hello World");
 
-        get("/kurwa", (req, res) -> {
-            return req.queryParams("ola");
+        get("/form", (req, res) -> {
+            return getForm();
+        });
+
+        get("/form/auth", (req, res) -> {
+            return getJupiSite();
         });
 
         get("/numer/:id", (req, res) -> {
@@ -73,21 +90,20 @@ public class Main {
                     Random rand = new Random();
                     String name = req.params(":name");
 
-                    if((String.valueOf(name).equals("womansite"))){
+                    if ((String.valueOf(name).equals("womansite"))) {
                         return getWomanSite();
                     }
 
-                    if((String.valueOf(name).equals("mansite"))){
+                    if ((String.valueOf(name).equals("mansite"))) {
                         return getmanSite();
                     }
 
 
-                    if((String.valueOf(name).endsWith("a"))){
-                        int  n = rand.nextInt(PORADYWOMAN.length-1) + 0;
+                    if ((String.valueOf(name).endsWith("a"))) {
+                        int n = rand.nextInt(PORADYWOMAN.length - 1) + 0;
                         tip = PORADYWOMAN[n];
                         linkToSexSite = "<a href=\"womansite\">Woman</a>";
-                    }
-                    else {
+                    } else {
                         int n = rand.nextInt(PORADYMAN.length - 1) + 0;
                         tip = PORADYMAN[n];
                         linkToSexSite = "<a href=\"mansite\">Man</a>";
@@ -98,13 +114,12 @@ public class Main {
                                     "<HTML>\n" +
                                     "<BODY>\n" +
                                     "   <H1>Hi</H1>\n" +
-                                    "   <P>This is website with tips. \nTip for you" + tip +"</P> \n" +
+                                    "   <P>This is website with tips. \nTip for you" + tip + "</P> \n" +
                                     linkToSexSite +
                                     "</BODY>\n" +
                                     "</HTML>";
                 }
         );
-
 
     }
 
@@ -122,6 +137,30 @@ public class Main {
                 "<HTML>\n" +
                 "<BODY>\n" +
                 "   <H1>Strona super Faceta</H1>\n" +
+                "</BODY>\n" +
+                "</HTML>";
+    }
+
+    private static String getJupiSite() {
+        return "<!DOCTYPE html PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n" +
+                "<HTML>\n" +
+                "<BODY>\n" +
+                "   <H1>Form valid</H1>\n" +
+                "</BODY>\n" +
+                "</HTML>";
+    }
+
+    private static String getForm() {
+        return "<!DOCTYPE html PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n" +
+                "<HTML>\n" +
+                "<BODY>\n" +
+                "   <H1>Wypełnij formularz</H1>\n" +
+                "<form action=\"form/auth\" method=\"get\">" +
+                "First name:<br> <input type=\"text\" name=\"firstname\"> <br>" +
+                "Last name:<br><input type=\"text\" name=\"lastname\"><br>" +
+                "Password:<br><input type=\"text\" name=\"password\">" +
+                "<button type=\"submit\">Submit</button><br>" +
+                "</form> " +
                 "</BODY>\n" +
                 "</HTML>";
     }
