@@ -1,15 +1,16 @@
 package com.ola;
 
 import com.ola.model.Person;
+import com.ola.model.Product;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import spark.Route;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import javax.xml.transform.Result;
+import java.sql.*;
+import java.util.*;
 
 
 import static spark.Spark.get;
@@ -18,6 +19,10 @@ import static spark.Spark.get;
  * Created by olaskierbiszewska on 24.10.15.
  */
 public class Main {
+
+    private static Connection connect = null;
+    private static String url;
+    private static Statement statement = null;
 
     static final String[] PORADYWOMAN = {
             "Porada woman nr. 1",
@@ -40,7 +45,41 @@ public class Main {
             "Porada man nr. 8"
     };
 
+
     public static void main(String[] args) {
+
+
+        try {
+            url = "jdbc:mysql://localhost:3306/wwsiti";
+            connect = DriverManager.getConnection(url, "wwsiti", "wwsi2015!");
+            //statement = connect.createStatement();
+            //resultSet = statement.executeQuery("SELECT * FROM PRODUCT");
+
+            PreparedStatement preparedStatement = connect.prepareStatement("SELECT * FROM PRODUCT");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<Product> productList = new ArrayList<>();
+
+            while (resultSet.next()) {
+                Product product = new Product();
+                product.setId(resultSet.getInt(1));
+                product.setName(resultSet.getString(2));
+                product.setBrand(resultSet.getString(3));
+                product.setPrice(resultSet.getDouble(4));
+
+                productList.add(product);
+//                System.out.println("yolo");
+//                System.out.print("result 1: " + resultSet.getInt(1));
+//                System.out.print("\n");
+//                System.out.println("result 2: " + resultSet.getString(2));
+//                System.out.print("\n");
+//                System.out.println("result 3: " + resultSet.getString(3));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return;
+        }
+
 
         get("/thymeleaf", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
