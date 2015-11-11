@@ -2,13 +2,9 @@ package com.ola;
 
 import com.ola.model.Person;
 import com.ola.model.Product;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-import spark.Route;
+import spark.*;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.*;
 
@@ -23,32 +19,19 @@ public class Main {
     private static Connection connect = null;
     private static String url;
     private static Statement statement = null;
+    private static List<Product> productList = new ArrayList<>();
 
     static final String[] PORADYWOMAN = {
             "Porada woman nr. 1",
             "Porada woman nr. 2",
-            "Porada woman nr. 3",
-            "Porada woman nr. 4",
-            "Porada woman nr. 5",
-            "Porada woman nr. 6",
-            "Porada woman nr. 7",
-            "Porada woman nr. 8"
     };
 
     static final String[] PORADYMAN = {
             "Porada man nr. 1",
             "Porada man nr. 3",
-            "Porada man nr. 4",
-            "Porada man nr. 5",
-            "Porada man nr. 6",
-            "Porada man nr. 7",
-            "Porada man nr. 8"
     };
 
-
     public static void main(String[] args) {
-
-
         try {
             url = "jdbc:mysql://localhost:3306/wwsiti";
             connect = DriverManager.getConnection(url, "wwsiti", "wwsi2015!");
@@ -57,8 +40,6 @@ public class Main {
 
             PreparedStatement preparedStatement = connect.prepareStatement("SELECT * FROM PRODUCT");
             ResultSet resultSet = preparedStatement.executeQuery();
-
-            List<Product> productList = new ArrayList<>();
 
             while (resultSet.next()) {
                 Product product = new Product();
@@ -80,13 +61,32 @@ public class Main {
             return;
         }
 
+        Spark.staticFileLocation("/static");
 
         get("/thymeleaf", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
 
-            model.put("person", new Person("Foobar"));
+            model.put("person", new Person("Test Person"));
+            model.put("productList", productList);
 
-            return new ModelAndView(model, "hello");
+            return new ModelAndView(model, "hello"); //"hello" to nazwa temlejta html
+        }, new ThymeleafTemplateEngine());
+
+        get("/products/:id", (req, resp) -> {
+            Product product = null;
+            int prodId = Integer.parseInt(req.params(":id"));
+            for (int i = 0; i < productList.size(); ++i) {
+                product = productList.get(i);
+                if(product.getId() == prodId) break;
+            }
+            Map<String, Object> model = new HashMap<>();
+            if(product != null) {
+                model.put("product", product);
+            }else {
+
+            }
+
+            return new ModelAndView(model, "product");
         }, new ThymeleafTemplateEngine());
 
         get("/hello", (req, res) -> "Hello World");
@@ -115,9 +115,9 @@ public class Main {
             return stringBuilder.toString();
         });
 
-        get("/yolo/:name", (req, res) -> {
-            return "Yolo" + req.params(":name" + "attr: " + req.attributes());
-        });
+//        get("/yolo/:name", (req, res) -> {
+//            return "Yolo" + req.params(":name" + "attr: " + req.attributes());
+//        });
 
         get("/say/*/to/*", (req, resp) -> {
             return "Nr of splat parameters: " + req.splat().length + "attr: " + req.attributes();

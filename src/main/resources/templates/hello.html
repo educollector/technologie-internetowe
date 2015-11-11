@@ -5,8 +5,26 @@
     <title></title>
 </head>
 <body>
-<p> Yolo</p>
+<p> Temlate HTML</p>
 
-<p>Hello<strong th:text="${person.name}"> Olaaa </strong>!!</p>
+<p>Hello <strong th:text="${person.name}"> Olaaa </strong>!!</p>
+<p><strong th:text="${productList[1].name}"> produkt do zmiany </strong></p>
+<p> List of products:</p>
+<li th:each="Product : ${productList}" th:text="${Product.name}">  produkt do wstawienia z listy</li>
+
+<p th:each="Product : ${productList}"
+   th:text="${Product.name}">A Smoke Test</p>
+
+<table>
+    <tr th:each="Product : ${productList}">
+        <td th:text="${Product.id}">001</td>
+        <td th:text="${Product.name}">Name</td>
+        <td th:text="${Product.brand}">brand</td>
+        <td th:text="${Product.price}">price</td>
+    </tr>
+</table>
+
+
+
 </body>
 </html>
