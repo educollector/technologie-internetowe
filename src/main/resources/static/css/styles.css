@@ -2,8 +2,7 @@
 body {
     padding: 0;
     margin: 0;
-    font-family: 'Lato-Regular';
-    background: #fff;
+    background-color: red;
 }
 p {
     display: block;
@@ -39,4 +38,13 @@ p {
     height: 100px;
     margin: 10px 10px 10px 10px;
     padding: 10px 10px 3px 10px;
+}
+
+.cardsBox {
+    text-align: center;
+    height: 60px;
+    border-top: solid;
+    border-bottom: solid;
+    border-color: lightgrey;
+    border-width:1px;
 }
