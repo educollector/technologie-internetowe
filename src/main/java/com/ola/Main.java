@@ -1,13 +1,15 @@
 package com.ola;
 
+import com.ola.model.Cart;
+import com.ola.model.CartItem;
 import com.ola.model.Person;
 import com.ola.model.Product;
-import spark.*;
+import spark.ModelAndView;
+import spark.Spark;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
 import java.sql.*;
 import java.util.*;
-
 
 import static spark.Spark.get;
 
@@ -20,6 +22,7 @@ public class Main {
     private static String url;
     private static Statement statement = null;
     private static List<Product> productList = new ArrayList<>();
+    private static Cart cart;
 
     static final String[] PORADYWOMAN = {
             "Porada woman nr. 1",
@@ -31,7 +34,38 @@ public class Main {
             "Porada man nr. 3",
     };
 
+    private static void saveCartItem(CartItem item, Cart cart) {
+        try {
+            url = "jdbc:mysql://localhost:3306/wwsiti";
+            connect = DriverManager.getConnection(url, "wwsiti", "wwsi2015!");
+            String checkQuery = "SELECT amount FROM CARTSPRODUCTS where id_cart="+  cart.getId() + " AND id_product=" + item.getProductId();
+            PreparedStatement preparedStatementCheck = connect.prepareStatement(checkQuery);
+            ResultSet resultSet = preparedStatementCheck.executeQuery();
+
+            Integer i = 0;
+            while (resultSet.next()) {
+                i = resultSet.getInt(1);
+            }
+
+            Integer amount = item.getAmout();
+            String query;
+            if(i>0){
+                amount +=i;
+                query= "UPDATE CARTSPRODUCTS SET amount=" + amount + " WHERE id_product=" + item.getProductId()
+                        + " AND id_cart=" + cart.getId();
+            }else{
+                query ="INSERT INTO CARTSPRODUCTS (id_product, amount, id_cart) VALUES ("
+                        +item.getProductId() + "," + amount  + "," + cart.getId() + ")";
+            }
+            PreparedStatement preparedStatement = connect.prepareStatement(query);
+            preparedStatement.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+            return;
+        }
+    }
     public static void main(String[] args) {
+        cart = new Cart();
         try {
             url = "jdbc:mysql://localhost:3306/wwsiti";
             connect = DriverManager.getConnection(url, "wwsiti", "wwsi2015!");
@@ -56,6 +90,30 @@ public class Main {
 //                System.out.print("\n");
 //                System.out.println("result 3: " + resultSet.getString(3));
             }
+
+            PreparedStatement preparedStatement1 = connect.prepareStatement("SELECT * FROM CART");
+            ResultSet resultSet1 = preparedStatement1.executeQuery();
+
+            cart = new Cart();
+            int counter = 0;
+            while (resultSet1.next()){
+                if(counter==0){
+                    cart.setId(resultSet1.getInt(1));
+                    break;
+                }
+                ++counter;
+            }
+
+            PreparedStatement preparedStatement2 = connect.prepareStatement("SELECT * FROM CARTSPRODUCTS");
+            ResultSet resultSet2 = preparedStatement2.executeQuery();
+            while (resultSet2.next()){
+                CartItem item = new CartItem();
+                item.setProductId(resultSet2.getInt(1));
+                item.setAmout(resultSet2.getInt(3));
+                cart.getCartItemsList().add(item);
+
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
             return;
@@ -96,6 +154,25 @@ public class Main {
         });
 
         get("/form/auth", (req, res) -> {
+            //Kliknięto guzik "Dodaj do koszyka"
+
+//            CartItem item = new CartItem();
+//            item.setProductId(resultSet2.getInt(1));
+//            item.setAmout(resultSet2.getInt(3));
+//            cart.getCartItemsList().add(item);
+
+            return getJupiSite();
+        });
+
+        get("/addToCart/:productId", (req, res) -> {
+            //Kliknięto guzik "Dodaj do koszyka"
+
+            CartItem item = new CartItem();
+            item.setProductId(Integer.parseInt(req.params(":productId")));
+            item.setAmout(Integer.parseInt("1"));
+            cart.getCartItemsList().add(item);
+            //TODO zapisac do bazy w tabeli CARTSITEMS dodajac pole cart.id
+            saveCartItem(item,cart);
             return getJupiSite();
         });
 
