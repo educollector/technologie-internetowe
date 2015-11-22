@@ -72,7 +72,7 @@ public class Main {
 
         Spark.staticFileLocation("/static");
 
-        get("/thymeleaf", (req, res) -> {
+        get("/home", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
 
             model.put("person", new Person("Test Person"));

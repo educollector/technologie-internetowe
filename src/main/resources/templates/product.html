@@ -32,6 +32,12 @@
     <div class ="container">
             <div th:include="wstawki :: topNavigation"/>
     </div>
+    <div class = "container">
+        <ol class="breadcrumb">
+            <li><a th:href="@{~/home}">HOME</a></li>
+            <li class="active" th:text="${product.name}">Strona produktu</li>
+        </ol>
+    </div>
 
     <div class ="container">
         <h2> Strona produktu</h2>
