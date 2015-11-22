@@ -26,7 +26,13 @@
 
 </head>
 <body>
-    <div class ="container">
+    <div class ="banner">
+        <button type="button" class="button-cart" aria-label="Right Align">
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+        </button>
+        <p>(4)</p>
+    </div>
+    <div class ="banner">
         <img src="/img/banner.png" alt="banenr image"/>
     </div>
     <div class ="container">
@@ -34,24 +40,40 @@
     </div>
     <div class = "container">
         <ol class="breadcrumb">
-            <li><a th:href="@{~/home}">HOME</a></li>
-            <li class="active" th:text="${product.name}">Strona produktu</li>
+            <li><a th:href="@{~/home}">Produkty</a></li>
+            <li class="active" th:text="${product.name}">Data</li>
         </ol>
     </div>
 
-    <div class ="container">
-        <h2> Strona produktu</h2>
-
+    <div class ="container" height = "400px">
         <p><strong th:text="${product.name}"> produkt do zmiany</strong></p>
         <p th:text="${product.brand}"> brand do zmiany</p>
         <p th:text="${product.price}"> price do zmiany</p>
-        <img src="/img/test.png" alt="test image"/>
 
-        <form th:action="@{|~/addToCart/${product.id}|}" method="get">
-            <div>
-            <input type="submit" class="btn btn-default dropdown-toggle" value = "Do koszyka"/>
-            </div>
-        </form>
+
+        <img  class="img-details" src="/img/test.png" alt="test image"/>
+        <div class="caption">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
+            </p>
+            <h4>
+                <form th:action="@{|~/addToCart/${product.id}|}" method="get">
+                    <div>
+                        <input type="submit" class="btn btn-default dropdown-toggle" value = "Do koszyka"/>
+                    </div>
+                </form>
+            </h4>
+        </div>
+
+
+
+
+
 
         <th:block th:switch="${wasAdded}">
             <div th:case="true"
