@@ -33,7 +33,7 @@
             <div th:include="wstawki :: topNavigation"/>
     </div>
 
-    <br class ="container">
+    <div class ="container">
         <h2> Strona produktu</h2>
 
         <p><strong th:text="${product.name}"> produkt do zmiany</strong></p>
@@ -41,8 +41,6 @@
         <p th:text="${product.price}"> price do zmiany</p>
         <img src="/img/test.png" alt="test image"/>
 
-
-        </br>
         <form th:action="@{|~/addToCart/${product.id}|}" method="get">
             <div>
             <input type="submit" class="btn btn-default dropdown-toggle" value = "Do koszyka"/>
