@@ -45,10 +45,19 @@
         </ol>
     </div>
 
-    <div class ="container" height = "400px">
+    <div  class ="container" height = "400px">
         <p><strong th:text="${product.name}"> produkt do zmiany</strong></p>
         <p th:text="${product.brand}"> brand do zmiany</p>
         <p th:text="${product.price}"> price do zmiany</p>
+
+        <th:block th:switch="${wasAdded}">
+            <div th:case="true"
+                 class="alert alert-success alert-dismissible"
+                 role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Produkt dodany do koszyka.</strong>
+            </div>
+        </th:block>
 
 
         <img  class="img-details" src="/img/test.png" alt="test image"/>
@@ -70,19 +79,6 @@
             </h4>
         </div>
 
-
-
-
-
-
-        <th:block th:switch="${wasAdded}">
-            <div th:case="true"
-                 class="alert alert-success alert-dismissible"
-                 role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong>Produkt dodany do koszyka.</strong>
-            </div>
-        </th:block>
 
     </div>
 
