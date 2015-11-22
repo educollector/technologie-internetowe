@@ -10,6 +10,9 @@ public class Product {
     private String brand;
     private double price;
 
+
+    private String wasAddedToCart;
+
     public int getId() {
         return id;
     }
