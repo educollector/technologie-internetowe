@@ -92,6 +92,7 @@ public class Main {
             if(product != null) {
                 model.put("product", product);
                 model.put("wasAdded", "true".equals(req.queryParams("wasAddedToCart")));
+                model.put("itemsCount", "("+ cart.getCartItemsList().size()+")");
             }
             return new ModelAndView(model, "product");
         }, new ThymeleafTemplateEngine());

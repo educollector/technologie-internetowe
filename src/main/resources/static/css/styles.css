@@ -51,8 +51,9 @@ p {
 
 .button-cart {
     border-style: none;
-    border-color: transparent;;
+    border-color: transparent;
     background-color: transparent;
+    float:right;
 }
 
 .img-details {
