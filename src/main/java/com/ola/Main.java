@@ -115,9 +115,10 @@ public class Main {
 
         get("/hello", (req, res) -> "Hello World");
 
-        get("/form", (req, res) -> {
-            return getForm();
-        });
+        get("/regulamin", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "regulamin");
+        }, new ThymeleafTemplateEngine());
 
         get("/form/auth", (req, res) -> {
             //Kliknięto guzik "Dodaj do koszyka"

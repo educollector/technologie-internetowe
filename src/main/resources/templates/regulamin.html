@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8"/>
+        <title></title>
+        <link href="/css/styles.css" rel='stylesheet' type='text/css' />
+        <!--<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />-->
+        <!--&lt;!&ndash; jQuery (necessary for Bootstrap's JavaScript plugins) &ndash;&gt;-->
+        <script src="/js/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+              integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+              crossorigin="anonymous"/>
+
+        <!-- Optional theme -->
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"
+              integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX"
+              crossorigin="anonymous"/>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+                integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+                crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <div class ="banner">
+            <img id="image-banner" src="/img/banner.png" alt="banenr image"/>
+        </div>
+        <div class ="container">
+            <div th:include="wstawki :: topNavigation"/>
+        </div>
+
+      <div class="container">
+          <p>
+              1. Informacje ogólne
+
+              Hurtownia internetowa www.hurt.com.pl jest własnością firmy:
+
+              Baltrade R. Czesnowski, B. Czesnowska sp.j.
+              ul. Gen. J. Hallera 132
+              80-416 Gdańsk
+
+              NIP 584-02-02-116
+              EU VAT PL5840202116
+              REGON 190945517
+              K.R.S. 0000082914
+              Nr GIOŚ E0006872WZBW
+              Rejestr Przedsiębiorców - Sąd Rejonowy Gdańsk-Północ w Gdańsku, VII Wydział Gospodarczy Krajowego Rejestru Sądowego
+              Główny zakres działalności gospodarczej wg PKD: 4690Z
+
+              Kopiowanie, modyfikowanie, powielanie treści (zdjęć, opisów itp.) zawartych w na stronie sklepu dla celów komercyjnych oraz promocyjnych jest zabronione.
+
+              Do korzystania ze strony naszego sklepu, potrzebujecie Państwo komputera z procesorem min. 200MHz, 64MB RAM, kartą graficzną obsługującą rozdzielczość 800x600, 256 kolorów oraz przeglądarką stron internetowych (np. Internet Explorer (wersja 6.0), Opera, Mozilla Firefox). Prosimy pamiętać, że Usługobiorcę będącego użytkownikiem naszego serwisu obowiązuje zakaz dostarczania treści o charakterze bezprawnym.
+
+              2. Opisy, zdjęcia i ceny produktów
+
+              Jeżeli nazwa produktu zawiera liczbę jego sztuk, podana cena jest ceną za podaną w nazwie liczbę sztuk produktu.
+              Ceny produktów na stronie kategorii są cenami brutto, na stronach z opisami poszczególnych produktów podane są zarówno cena netto i cena brutto.
+
+
+              3. Składanie zamówień
+
+              Zamówienia przyjmujemy w następujący sposób: poprzez sklep internetowy www.hurt.com.pl, pocztą elektroniczną na adres ehandel@hurt.com.pl, telefonicznie pod numerem: 58 5564344, faksem 58 5522020 lub osobiście w siedzibie firmy.
+
+              Wysyłka za granicę możliwa jest jedynie po wcześniejszym uzgodnieniu drogą mailową lub telefonicznie. Koszty wysyłki takiego zamówienia ustalane są indywidualnie dla każdego zamówienia.
+
+
+              4. Sposoby dostawy
+
+              Oferujemy następujące możliwości dostarczenia towaru:
+              • wysyłka ekonomiczna Pocztą Polską - metoda wysyłki dostępna jedynie dla wybranych produktów małogabarytowych (uwidocznione to jest razem z opisem produktu) i jedynie w przypadku przedpłaty; przesyłka taka kosztuje 6,00 zł dla zamówień, które opłacisz z góry przelewem na nasze konto.
+
+              • wysyłka Pocztą Polską, usługa Kurier48 - przesyłka dociera przeważnie w ciągu około 1-2 dni roboczych od dnia wysyłki; Przesyłka taka kosztuje 12 zł dla zamówień, które opłacicie z góry przelewem na nasze konto.
+
+              • wysyłka pobraniowa Pocztą Polską, usługa Kurier48 - paczka dociera przeważnie w ciągu około 1-2 dni roboczych od dnia wysyłki; za zamówione produkty zapłacą Państwo przy odbiorze listonoszowi lub na poczcie; przesyłka taka kosztuje 16 zł.
+
+              • przesyłka kurierska (kurier GLS, Siódemka) - kurier dowozi przesyłkę przeważnie następnego dnia roboczego od momentu nadania przesyłki pod wskazany adres. Jeżeli wybiorą Państwo płatność za pobraniem, za zamówione produkty zapłacicie kurierowi przy odbiorze - przesyłka taka kosztuje 19 zł, także w przypadku płatności przelewem z odroczonym terminem płatności. W przypadku zamówień które opłacicie Państwo z góry przelewem na nasze konto zapłacicie Państwo 14 zł.
+
+              • Paczkomaty InPost 24/7* – przesyłka doręczana jest do Paczkomatu InPost najpóźniej w ciągu 3 dni roboczych od dnia wysyłki. Przesyłka taka kosztuje 9 zł przy przedpłacie oraz płatności PayU. Sprawdź szczegóły: https://www.inpost.pl/o-firmie/regulaminy-uslug.html
+
+              • odbiór osobisty w siedzibie firmy - po odbiór towaru zapraszamy do siedziby naszej firmy przy ulicy Gen. J. Hallera 132 w Gdańsku (wjazd od ul. Chrobrego).
+
+              • dostawa transportem BALTRADE - tylko w granicach Trójmiasta i w ograniczonym zakresie (po uprzednim uzgodnieniu) dostarczamy towar do sklepów i przedsiębiorstw (dotyczy tylko zakupów hurtowych).
+
+              W przypadku gdy wartość zamówienia przekroczy 800 zł i płatne jest za pobraniem lub przedpłatą pokrywamy koszty wysyłki i paczkę nadajemy kurierem.
+
+              Dla zamówień powyżej 110zł zalecamy wybór przesyłki kurierskiej.
+
+              Zamówienia na kwotę powyżej 300 zł wysyłamy jedynie kurierem lub na życzenia Klienta za pośrednictwem Paczkomatów 24/7.
+
+              *Opcja Paczkomaty 24/7 jest niedostępna dla towarów o dużym gabarycie. W przypadku złożenia takiego zamówienia nasz pracownik skontaktuje się z Państwem celem uzgodnienia innej dogodnej formy dostawy.
+
+
+              Więcej informacji dotyczących odbioru przesyłek kurierskich można znaleźć na stronie: GLS - Informator dla odbiorców.
+
+
+              Uwagi dotyczące dostawy przesyłek kurierskich oraz sprawdzenia przesyłki przy odbiorze.
+
+              Przesyłki przez Kuriera dostarczane są zwykle w godzinach od 8 do 16. Zdarza się niestety, że Klienci w tych godzinach są nieobecni pod adresem dostawy, a kurier może wykonać próbę dostawy tylko 2 razy! Radzimy, aby skontaktować się z kurierem telefonicznie i ustalić godzinę kiedy kurier będzie dostarczał przesyłki w Państwa rejonie (miejscowości) lub umówić się z nim w dogodny dla Państwa sposób, a możliwy do zrealizowania przez kuriera.
+
+              Aktualne numery telefonów do firm kurierskich:
+              - GLS: Infolinia: 804 262 262, dla telefonów komórkowych: (46) 814-82-20
+              - Siódemka: (22) 777 77 77 wew. 3
+
+              W razie przesłania rzeczy sprzedanej na miejsce przeznaczenia za pośrednictwem przewoźnika, kupujący obowiązany jest zbadać przesyłkę w czasie i w sposób przyjęty przy przesyłkach tego rodzaju. Jeżeli stwierdzą Państwo, że w czasie przewozu nastąpił ubytek lub uszkodzenie rzeczy, kupujący jest obowiązany dokonać wszelkich czynności niezbędnych do ustalenia odpowiedzialności przewoźnika. Jeżeli przed wydaniem przesyłki okaże się, że doznała ona ubytku lub uszkodzenia, przewoźnik na żądanie uprawnionego (czyli Państwa), ma obowiązek ustalić niezwłocznie, protokolarnie, stan przesyłki oraz okoliczności powstania szkody. Jeżeli po wydaniu przesyłki ujawniony zostanie ubytek lub uszkodzenie nie dające się z zewnątrz zauważyć przy odbiorze, możecie Państwo wezwać przewoźnika w celu ustalenia stanu przesyłki. Należy to zrobić niezwłocznie po ujawnieniu szkody, nie później jednak niż w ciągu 7 dni od dnia odbioru przesyłki.
+              Proszę pamiętać, iż zgodnie z Prawem Przewozowym (Art. 74, 76) przyjęcie przesyłki przez uprawnionego bez zastrzeżeń powoduje wygaśnięcie roszczeń z tytułu ubytku lub uszkodzenia, chyba że:
+              1) szkodę stwierdzono protokolarnie przed przyjęciem przesyłki przez uprawnionego,
+              2) zaniechano takiego stwierdzenia z winy przewoźnika,
+              3) ubytek lub uszkodzenie wynikło z winy umyślnej lub rażącego niedbalstwa przewoźnika,
+              4) szkodę nie dającą się z zewnątrz zauważyć uprawniony stwierdził po przyjęciu przesyłki i w terminie 7 dni zażądał ustalenia jej stanu oraz udowodnił, że szkoda powstała w czasie między przyjęciem przesyłki do przewozu a jej wydaniem.
+
+
+              Uwagi dotyczące składania reklamacji przesyłek za pośrednictwem Paczkomatów 24/7.
+
+              Przy odbieraniu paczki z Paczkomatu prosimy zwrócić uwagę na stan opakowania. Jeżeli są jakiekolwiek wątpliwości, że towar podczas transportu mógł zostać uszkodzony lub mogło dojść do prób otwarcia przesyłki należy zainicjować procedurę reklamacyjną zgodnie z instrukcjami wyświetlanymi w Paczkomacie. Formularz reklamacyjny wysyłany jest na podany adres e-mail, który należy wypełnić w ciągu 14 dni. Więcej szczegółów znajdą Państwo na stronie InPost: http://www.inpost.pl/klient-indywidualny.html
+
+              5. Metody płatności
+
+              Dla wygody naszych Klientów oferujemy kilka metod płatności:
+              - pobranie - za zamówione towary płacisz przy odbiorze przesyłki (niedostępna dla Paczkomatów 24/7).
+              - przedpłata na konto - po sfinalizowaniu zamówienia otrzymasz informację o sumie do wpłaty i numerze konta na które należy dokonać przelewu; realizację zamówienia rozpoczynamy po potwierdzeniu zaksięgowania przelewu na naszym koncie w mBanku.
+              - PayU(dawne platnosci.pl) -szybki przelew bankowy realizowany przez usługę PayU. Nasz sklep otrzymuje informację o zapłacie za zamówienie zaraz po jego opłaceniu z Państwa konta bankowego lub obciążeniu karty kredytowej.
+              Uwaga! Ta metoda płatności jest niedostępna przy aktywacji kodu rabatowego.
+              - przelew z odroczonym terminem płatności – forma ta dostępna jest jedynie dla stałych Klientów dokonujących zakupów hurtowych oraz dla instytucji, urzędów i przedsiębiorstw – po zaakceptowaniu zamówienia przez nasz dział finansowy. Klienci zainteresowani tą formą płatności mają możliwość wydrukowania oferty / faktury pro-forma / zamówienia - na interesujące ich produkty bezpośrednio z „koszyka” naszej witryny (niedostępna dla Paczkomatów 24/7).
+
+              6. Reklamacje i gwarancje
+
+              Większość towarów dostępnych w naszym sklepie objęta jest gwarancją producenta. Okres gwarancji zazwyczaj wynosi 12 miesięcy od daty zakupu a wszelkie ewentualne zmiany tego okresu są wyraźnie zaznaczone przy opisie danego produktu. Gwarancja na sprzedany towar konsumpcyjny nie wyłącza, nie ogranicza ani nie zawiesza uprawnień kupującego wynikających z niezgodności towaru z umową. Jeżeli zdarzy się, że po otrzymaniu towaru wykryją Państwo w nim jakieś wady techniczne, mogą Państwo skontaktować się z nami, abyśmy określili optymalny dla Państwa sposób załatwienia reklamacji. W przypadku gdy towar objęty jest gwarancją, reklamacje mogą Państwo składać także na warunkach w niej określonych.
+
+              Nasz sklep odpowiada wobec Klientów będących konsumentami za niezgodność towaru z umową. Jeżeli towar konsumpcyjny jest niezgodny z umową, kupujący może żądać doprowadzenia go do stanu zgodnego z umową przez nieodpłatną naprawę albo wymianę na nowy, chyba że naprawa albo wymiana są niemożliwe lub wymagają nadmiernych kosztów. Kupujący traci uprawnienia omówione powyżej, jeżeli przed upływem dwóch miesięcy od stwierdzenia niezgodności towaru konsumpcyjnego z umową nie zawiadomi o tym sprzedawcy. Do zachowania terminu wystarczy wysłanie zawiadomienia przed jego upływem. Sprzedawca odpowiada za niezgodność towaru konsumpcyjnego z umową jedynie w przypadku jej stwierdzenia przed upływem dwóch lat od wydania tego towaru kupującemu.Sprzedawca nie odpowiada za niezgodność towaru konsumpcyjnego z umową, gdy kupujący w chwili zawarcia umowy o tej niezgodności wiedział lub, oceniając rozsądnie, powinien był wiedzieć.
+
+              Odsyłając reklamowany towar prosimy dołączyć kopię otrzymanego dowodu zakupu oraz dokładny opis przyczyny reklamacji. Jeśli reklamacja uznana zostanie za zasadną, produkt zostanie naprawiony lub wymieniony na pełnowartościowy. Jeśli będzie to niemożliwe (np. ze względu na brak produktu w aktualnej ofercie) zwrócimy Państwu pieniądze. Do Państwa żądania ustosunkujemy się w ciągu 14 dni.
+
+              7. Prawo odstąpienia od umowy
+
+              Zgodnie z Ustawą z dnia 2 marca 2000 roku o ochronie niektórych praw konsumentów oraz o odpowiedzialności za szkodę wyrządzoną przez produkt niebezpieczny, konsument, który zawarł umowę na odległość, może od niej odstąpić bez podania przyczyny w terminie 10 dni od daty odebrania towaru. Do zachowania terminu wystarczy wysłanie oświadczenia (przykładowy wzór oświadczenia) przed jego upływem.W razie odstąpienia od umowy umowa jest uważana za niezawartą, a konsument jest zwolniony z wszelkich zobowiązań. To, co strony świadczyły, ulega zwrotowi w stanie niezmienionym, chyba że zmiana była konieczna w granicach zwykłego zarządu. Zwrot powinien nastąpić niezwłocznie, nie później niż w terminie czternastu dni, od dnia odstąpienia.
+
+              Jeżeli strony nie umówiły się inaczej, prawo odstąpienia od umowy zawartej na odległość nie przysługuje konsumentowi w wypadkach:
+              1) świadczenia usług rozpoczętego, za zgodą konsumenta, przed upływem 10-cio dniowego terminu na odstąpienie, 2) dotyczących nagrań audialnych i wizualnych oraz zapisanych na informatycznych nośnikach danych po usunięciu przez konsumenta ich oryginalnego opakowania, 3) umów dotyczących świadczeń, za które cena lub wynagrodzenie zależy wyłącznie od ruchu cen na rynku finansowym, 4) świadczeń o właściwościach określonych przez konsumenta w złożonym przez niego zamówieniu lub ściśle związanych z jego osobą, 5) świadczeń, które z uwagi na ich charakter nie mogą zostać zwrócone lub których przedmiot ulega szybkiemu zepsuciu, 6) dostarczania prasy, 7) usług w zakresie gier hazardowych.
+
+              Zwroty i reklamacje prosimy przesyłać na adres:
+
+              Baltrade R. Czesnowski, B. Czesnowska sp.j.
+              ul. Gen. J. Hallera 132
+              80-416 Gdańsk
+
+              8. Skargi
+
+              Jeśli chcesz zgłosić skargę dotyczącą jakości obsługi lub trybu realizacji zamówienia skorzystaj z formularza zgłoszenia skargi. Każde zgłoszenie będzie rozpatrzone z należną mu starannością. Ewentualny błąd zostanie natychmiast naprawiony i postaramy się nie dopuścić do jego wystąpienia w przyszłości.
+
+              9. Ochrona danych osobowych
+
+              Zgodnie z ustawą „O ochronie danych osobowych” z dnia 29 sierpnia 1997 roku, administratorem Państwa danych osobowych jest firma Baltrade R. Czesnowski, B. Czesnowska sp.j. Uzyskane w trakcie składania i realizacji zamówienia dane osobowe gromadzone są w naszej bazie danych Klientów i wykorzystywane są jedynie w zakresie koniecznym do realizacji Państwa zamówienia. Nie są one w żaden sposób udostępniane osobom trzecim, firmom czy organizacjom.
+              Klient ma prawo wglądu do swoich danych osobowych, prawo ich poprawiania, a także prawo żądania zaprzestania ich przetwarzania i ich usunięcia z bazy danych.
+
+              Baza danych osobowych zgodnie z przepisami prawa została zarejestrowana w rejestrze prowadzonym przez Generalnego Inspektora Ochrony Danych Osobowych pod numerem 078555.
+          </p>
+        </div>
+        <div class ="container">
+            <div th:include="wstawki :: footer"/>
+        </div>
+
+    </body>
+</html>
