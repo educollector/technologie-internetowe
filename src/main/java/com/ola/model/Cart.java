@@ -25,4 +25,12 @@ public class Cart {
     public void setCartItemsList(List<CartItem> cartItemsList) {
         this.cartItemsList = cartItemsList;
     }
+
+    public double getCartValue() {
+        double value = 0;
+        for(CartItem item : this.cartItemsList){
+            value += item.getValue();
+        }
+        return value;
+    }
 }

@@ -84,18 +84,18 @@
 
     </div>
 
-    <table>
-        <tr th:each="Product : ${productList}">
-            <td th:text="${Product.id}">001</td>
-            <td>
-                <a th:href="@{'http://localhost:4567/products/'+${Product.id}}"
-                   th:text="${Product.name}">linkDoNazwy</a>
-            </td>
-            <td th:text="${Product.brand}">brand</td>
-            <td th:text="${Product.price}">price</td>
-            <td><a th:href="@{'http://localhost:4567/products/'+${Product.id}}">Zobacz >></a></td>
-        </tr>
-    </table>
+    <!--<table>-->
+        <!--<tr th:each="Product : ${productList}">-->
+            <!--<td th:text="${Product.id}">001</td>-->
+            <!--<td>-->
+                <!--<a th:href="@{'http://localhost:4567/products/'+${Product.id}}"-->
+                   <!--th:text="${Product.name}">linkDoNazwy</a>-->
+            <!--</td>-->
+            <!--<td th:text="${Product.brand}">brand</td>-->
+            <!--<td th:text="${Product.price}">price</td>-->
+            <!--<td><a th:href="@{'http://localhost:4567/products/'+${Product.id}}">Zobacz >></a></td>-->
+        <!--</tr>-->
+    <!--</table>-->
 
     <div class ="container">
         <div th:include="wstawki :: footer"/>

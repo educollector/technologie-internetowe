@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    <link href="/css/styles.css" rel='stylesheet' type='text/css' />
+    <!--<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />-->
+    <!--&lt;!&ndash; jQuery (necessary for Bootstrap's JavaScript plugins) &ndash;&gt;-->
+    <script src="/js/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+          integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+          crossorigin="anonymous"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"
+          integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX"
+          crossorigin="anonymous"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+            integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class ="container">
+        <button type="button" class="button-cart">
+            <!--<a href="#" ><span class="glyphicon glyphicon-shopping-cart" th:text="${itemsCount}">345</span></a>-->
+        </button>
+    </div>
+    <div class ="banner">
+        <img id="image-banner" src="/img/banner.png" alt="banenr image"/>
+    </div>
+    <div class ="container">
+        <div th:include="wstawki :: topNavigation"/>
+    </div>
+
+    <div class ="container">
+        <h3>Koszyk</h3>
+            <table class="table">
+                <tr>
+                    <th>Produkt ID</th>
+                    <th>Nazwa</th>
+                    <th>Cena (zł)</th>
+                    <th>Ilość (szt.)</th>
+                    <th>Wartość (zł)</th>
+                </tr>
+                <th:block th:each="cartItem : ${cartItemsList}">
+                    <tr>
+                        <td th:text="${cartItem.productId}">Prod ID</td>
+                        <td th:text="${cartItem.name}">Name</td>
+                        <td th:text="${cartItem.price}">price</td>
+                        <td th:text="${cartItem.amount}">Amount</td>
+                        <td th:text="${cartItem.value}">value</td>
+                    </tr>
+                </th:block>
+                <tr>
+                    <th><h3 id="sum-label" th:text="${value}">SUM VALUE</h3></th>
+                </tr>
+            </table>
+
+        <div class="form-wrapper">
+            <form class="form-horizontal" >
+                <h4> Dostawa</h4>
+                <!--<div class="radio">-->
+                    <!--<label>-->
+                        <!--<input type="radio" name="dostawaRadios" id="kurier1" value="option1">-->
+                        <!--Kurier (przedpłata na konto) - 14,00 zł-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="radio">-->
+                    <!--<label>-->
+                        <!--<input type="radio" name="dostawaRadios" id="kurier2" value="option1">-->
+                        <!--Kurier (pobranie) - 19,00 zł-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="radio">-->
+                    <!--<label>-->
+                        <!--<input type="radio" name="dostawaRadios" id="kurier3" value="option2">-->
+                        <!--Kurier (zapłata przez PayU - karty płatnicze, szybkie przelewy) - 14,00 zł-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="radio">-->
+                    <!--<label>-->
+                        <!--<input type="radio" name="dostawaRadios" id="odwbiorOsobisty" value="option3">-->
+                        <!--Odbiór osobisty - 0,00 zł-->
+                    <!--</label>-->
+                <!--</div>-->
+
+                <h4>Typ odbiorcy (pole obowiązkowe)</h4>
+                    <!--<div class="radio">-->
+                        <!--<label>-->
+                            <!--<input type="radio" name="typeRadios" id="optionsRadios1" value="odbiorcaOption1">-->
+                            <!--osoba prywatna lub przedsiębiorca nie będący płatnikiem podatku VAT-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <!--<div class="radio">-->
+                        <!--<label>-->
+                            <!--<input type="radio" name="typeRadios" id="optionsRadios2" value="odbiorcaOption2">-->
+                            <!--przedsiębiorca prowadzący działalność gospodarczą, będący płatnikiem podatku VAT-->
+                        <!--</label>-->
+                    <!--</div>-->
+
+                <h4>Dane do wysyłki (pole obowiązkowe)</h4>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Imię i nazwisko/nazwa firmy*</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputName" placeholder="Imię i nazwisko/nazwa firmy">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress" class="col-sm-2 control-label">Adres (ulica, numer domu i mieszkania)*</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Adres">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPostalCode" class="col-sm-2 control-label">Kod pocztowy*</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPostalCode" placeholder="00-000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputCity" class="col-sm-2 control-label">Miejcowość*</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputCity" placeholder="Miejscowość">
+                        </div>
+                    </div>
+
+                <h3>Dane do kontaktowe</h3>
+                <div class="form-group">
+                    <label for="inputMail" class="col-sm-2 control-label">E-mail*</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputMail" placeholder="Imię i nazwisko/nazwa firmy">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPhone" class="col-sm-2 control-label">Telefon</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPhone" placeholder="000 000 000">
+                    </div>
+                </div>
+
+
+                <h3>Regulamin</h3>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="">
+                            Oświadczam, że przeczytałem i akceptuję &nbsp
+                            <a href ="#">Regulamin Sklepu hurt.com.pl</a>
+                        </label>
+                    </div>
+            </form>
+        </div>
+
+        <!--<a class="btn btn-primary" role="button" th:href="#">Złóż zanówieni z obowiązkiem zapłaty</a>-->
+    </div>
+
+
+    <div class ="container">
+        <div th:include="wstawki :: footer"/>
+    </div>
+
+</body>
+</html>

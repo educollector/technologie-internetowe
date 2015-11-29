@@ -8,7 +8,6 @@ import spark.ModelAndView;
 import spark.Spark;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
-import java.awt.font.ShapeGraphicAttribute;
 import java.sql.*;
 import java.util.*;
 
@@ -60,7 +59,15 @@ public class Main {
             while (resultSet2.next()){
                 CartItem item = new CartItem();
                 item.setProductId(resultSet2.getInt(1));
-                item.setAmout(resultSet2.getInt(3));
+                item.setAmount(resultSet2.getInt(3));
+
+
+                for(Product p : productList){
+                    if(p.getId() == item.getProductId()){
+                        item.setName(p.getName());
+                        item.setPrice(p.getPrice());
+                    }
+                }
                 cart.getCartItemsList().add(item);
 
             }
@@ -92,9 +99,18 @@ public class Main {
             if(product != null) {
                 model.put("product", product);
                 model.put("wasAdded", "true".equals(req.queryParams("wasAddedToCart")));
-                model.put("itemsCount", "("+ cart.getCartItemsList().size()+")");
+                model.put("itemsCount", "(" + cart.getCartItemsList().size() + ")");
             }
             return new ModelAndView(model, "product");
+        }, new ThymeleafTemplateEngine());
+
+        get("/cartsummary", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            model.put("cartItemsList", cart.getCartItemsList());
+            model.put("value", String.format("SUMA: %1.2f zł", cart.getCartValue()));
+
+            return new ModelAndView(model, "cartsummary");
         }, new ThymeleafTemplateEngine());
 
         get("/hello", (req, res) -> "Hello World");
@@ -108,7 +124,7 @@ public class Main {
 
 //            CartItem item = new CartItem();
 //            item.setProductId(resultSet2.getInt(1));
-//            item.setAmout(resultSet2.getInt(3));
+//            item.setAmount(resultSet2.getInt(3));
 //            cart.getCartItemsList().add(item);
 
             return getJupiSite();
@@ -119,7 +135,7 @@ public class Main {
 
             CartItem item = new CartItem();
             item.setProductId(Integer.parseInt(req.params(":productId")));
-            item.setAmout(Integer.parseInt("1"));
+            item.setAmount(Integer.parseInt("1"));
             cart.getCartItemsList().add(item);
             saveCartItem(item,cart);
             res.redirect("/products/" + req.params(":productId") + "?wasAddedToCart=true");
@@ -162,7 +178,7 @@ public class Main {
                 i = resultSet.getInt(1);
             }
 
-            Integer amount = item.getAmout();
+            Integer amount = item.getAmount();
             String query;
             if(i>0){
                 amount +=i;
