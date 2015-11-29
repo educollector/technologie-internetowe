@@ -80,11 +80,12 @@ p {
     background-size: auto 200%;
 }
 
-#sum-label {
+.sum-label {
     float: right;
 }
 
 .form-wrapper {
     background-color: lightgrey;
-    width: 100px;
+    width: 95%;
+    padding: 10px 10px 10px 10px;
 }
