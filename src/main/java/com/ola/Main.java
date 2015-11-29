@@ -12,6 +12,7 @@ import java.sql.*;
 import java.util.*;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 /**
  * Created by olaskierbiszewska on 24.10.15.
@@ -125,28 +126,32 @@ public class Main {
             return new ModelAndView(model, "kontakt");
         }, new ThymeleafTemplateEngine());
 
-        get("/form/auth", (req, res) -> {
-            //Kliknięto guzik "Dodaj do koszyka"
+        post("/sendMail", (req, res) -> {
+            System.out.print("sendMail");
+            return null;
+        });
 
-//            CartItem item = new CartItem();
-//            item.setProductId(resultSet2.getInt(1));
-//            item.setAmount(resultSet2.getInt(3));
-//            cart.getCartItemsList().add(item);
-
-            return getJupiSite();
+        post("/productOrdered", (req, res) -> {
+            System.out.print("productOrdered");
+            res.redirect("/cartsummary");
+            return "productOrdered";
         });
 
         get("/addToCart/:productId", (req, res) -> {
             //Kliknięto guzik "Dodaj do koszyka"
-
             CartItem item = new CartItem();
             item.setProductId(Integer.parseInt(req.params(":productId")));
             item.setAmount(Integer.parseInt("1"));
+            for(Product p : productList){
+                if(p.getId() == item.getProductId()){
+                    item.setName(p.getName());
+                    item.setPrice(p.getPrice());
+                }
+            }
             cart.getCartItemsList().add(item);
             saveCartItem(item,cart);
             res.redirect("/products/" + req.params(":productId") + "?wasAddedToCart=true");
             return null;
-            //return getJupiSite();
         });
 
 //        get("/numer/:id", (req, res) -> {
@@ -207,7 +212,7 @@ public class Main {
         return "<!DOCTYPE html PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n" +
                 "<HTML>\n" +
                 "<BODY>\n" +
-                "   <H1>Form valid</H1>\n" +
+                "   <H1>Wyslano wiadomosc</H1>\n" +
                 "</BODY>\n" +
                 "</HTML>";
     }

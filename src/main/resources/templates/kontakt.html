@@ -37,12 +37,37 @@
                 var marker = new google.maps.Marker({
                     position: myLatLng,
                     map: map,
-                    title: 'Hello World!'
+                    title: 'Tu jesteśmy!'
                 });
             }
-
-
             google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#contactForm').validate({ // initialize the plugin
+                    rules: {
+                        contatInputEmail: {
+                            required: true,
+                            email: true
+                        },
+                        conatctInputTopic: {
+                            required: true,
+                            minlength: 5
+                        },
+                        contactTextArea: {
+                            required: true,
+                            minlength: 5
+                        }
+
+                    }
+//                    submitHandler: function (form) {
+//                        alert('Wiadomość została wysłana.');
+//                        return false;
+//                    }
+                });
+
+            });
         </script>
 
     </head>
@@ -69,7 +94,7 @@
                     58 5522020 wew. 201 (Katarzyna Gielniak)<br/><br/>
                 </p>
 
-                <form id="contactForm"  method="post">
+                <form id="contactForm" th:action="@{~/sendMail}"  method="post">
                     <div class="form-group">
                         <label for="contatInputEmail">Email</label>
                         <input type="email" class="form-control" id="contatInputEmail" name="contatInputEmail" placeholder=" "/>

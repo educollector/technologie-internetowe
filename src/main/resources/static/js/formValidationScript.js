@@ -5,11 +5,9 @@ $(document).ready(function () {
     $('#myform').validate({ // initialize the plugin
         rules: {
             dostawaRadios: {
-                required: true,
-                minlength: 5
+                required: true
             },typeRadios: {
-                required: true,
-                minlength: 5
+                required: true
             },
             inputName: {
                 required: true,
@@ -31,23 +29,15 @@ $(document).ready(function () {
                 required: true,
                 email: true
             },
-            messages: {
-                name: "Podaj e-mail",
-                email: {
-                    required: "Potrzebujemy Twojego adresu e-mail w celu wysłania informacji o zamówieniu",
-                    email: "E-mail powinien mieć format name@domain.com"
-                }
-            },
             inputRegulamin: {
-                required: true,
-                minlength: 5
+                required: true
             },
 
         },
-        submitHandler: function (form) { // for demo
-            alert('valid form submitted'); // for demo
-            return false; // for demo
-        }
+        //submitHandler: function (form) {
+        //    alert('Zamówienie złorzone poprawnie');
+        //    return false;
+        //}
     });
 
 });
