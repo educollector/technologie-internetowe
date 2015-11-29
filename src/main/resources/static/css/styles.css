@@ -89,3 +89,25 @@ p {
     width: 95%;
     padding: 10px 10px 10px 10px;
 }
+
+.contact-form-wrapper{
+    width: 50%;
+    float: left;
+    margin: 10px 10px 10px 10px;
+}
+
+.contact-addres-wrapper{
+    width: 40%;
+    float: right;
+    margin: 10px 10px 10px 10px;
+}
+
+#googleMap {
+    width: 40%;
+    height: 300px;
+    float: right;
+}
+
+#contactTextArea {
+    height: 300px;
+}

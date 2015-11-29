@@ -23,6 +23,27 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
                 integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
                 crossorigin="anonymous"></script>
+        <script src="http://maps.googleapis.com/maps/api/js"></script>
+        <script>
+            function initialize() {
+                var myLatLng = {lat: 54.360, lng: 18.639};
+                var mapProp = {
+                    center:myLatLng,
+                    zoom:5,
+                    mapTypeId:google.maps.MapTypeId.ROADMAP
+                };
+                var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+                var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    title: 'Hello World!'
+                });
+            }
+
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
 
     </head>
     <body>
@@ -34,7 +55,61 @@
         </div>
 
         <div class="container">
+            <div class="contact-form-wrapper">
+                <p>
+                    <br/>
+                    <b>Sprzedaż wysyłkowa detaliczna:</b><br/>
+                    58 552 20 20 wew. 300 (Iwona Budkiewicz)<br/>
+                    58 552 20 20 wew. 5<br/>
+                    58 552 34 24 wew. 5<br/>
+                    509 960 424 (komórkowy Orange)<br/><br/>
 
+                    <b>Sprzedaż hurtowa</b>
+                    kasia@baltrade.pl<br/>
+                    58 5522020 wew. 201 (Katarzyna Gielniak)<br/><br/>
+                </p>
+
+                <form id="contactForm"  method="post">
+                    <div class="form-group">
+                        <label for="contatInputEmail">Email</label>
+                        <input type="email" class="form-control" id="contatInputEmail" name="contatInputEmail" placeholder=" "/>
+                    </div>
+                    <div class="form-group">
+                        <label for="conatctInputTopic">Tytuł</label>
+                        <input type="text" class="form-control" id="conatctInputTopic" name="conatctInputTopic" placeholder=" "/>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactTextArea">Treść wiadomości</label>
+
+                        <textarea id="contactTextArea" class="form-control" name="contactTextArea" ></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">Wyślij</button>
+                </form>
+            </div>
+
+            <div class="contact-addres-wrapper">
+                <p>
+                    <br/>
+                    <b>Nasz adres:</b><br/>
+                    ul. Gen. J. Hallera 132 (wjazd od Chrobrego)<br/>
+                    80-416 Gdańsk<br/><br/>
+
+                    <b>Dane firmy:</b><br/>
+                    NIP 584-02-02-116<br/>
+                    EU VAT PL5840202116<br/>
+                    regon 190945517<br/>
+                    K.R.S. 0000082914<br/>
+                    Nr GIOŚ E0006872WZBW<br/><br/>
+                    <b>Godziny otwarcia:</b><br/>
+                    pon. - pt.  8:00-18:00<br/><br/>
+                    <b>Konto (mBank) do wpłat:</b><br/>
+                    77 1140 2004 0000 3502 3109 2890<br/><br/>
+                </p>
+            </div>
+
+            <div id="googleMap">
+
+            </div>
         </div>
         <div class ="container">
             <div th:include="wstawki :: footer"/>
