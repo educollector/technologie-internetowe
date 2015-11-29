@@ -120,6 +120,11 @@ public class Main {
             return new ModelAndView(model, "regulamin");
         }, new ThymeleafTemplateEngine());
 
+        get("/kontakt", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "kontakt");
+        }, new ThymeleafTemplateEngine());
+
         get("/form/auth", (req, res) -> {
             //Kliknięto guzik "Dodaj do koszyka"
 
