@@ -27,12 +27,7 @@
 </head>
 <body>
     <div class ="container">
-        <button type="button" class="button-cart">
-            <a th:href="@{~/cartsummary}" ><span class="glyphicon glyphicon-shopping-cart" th:text="${itemsCount}">345</span></a>
-        </button>
-    </div>
-    <div class ="banner">
-        <img id="image-banner" src="/img/banner.png" alt="banenr image"/>
+        <div th:include="wstawki :: banner"/>
     </div>
     <div class ="container">
             <div th:include="wstawki :: topNavigation"/>
@@ -40,14 +35,14 @@
     <div class = "container">
         <ol class="breadcrumb">
             <li><a th:href="@{~/home}">Produkty</a></li>
-            <li class="active" th:text="${product.name}">Data</li>
+            <li class="active" th:text="${product.name}">12</li>
         </ol>
     </div>
 
     <div  class ="container" height = "400px">
-        <p><strong th:text="${product.name}"> produkt do zmiany</strong></p>
-        <p th:text="${product.brand}"> brand do zmiany</p>
-        <p th:text="${product.price}"> price do zmiany</p>
+        <h4><strong th:text="${product.name}"> produkt do zmiany</strong></h4>
+        <h5 th:text="'PRODUCTENT: ' + |${product.brand}|"> PRODUCTENT: BioPlant</h5>
+        <h5 th:text="'CENA: ' + |${product.price}|"> CENA: ddk</h5>
 
         <th:block th:switch="${wasAdded}">
             <div th:case="true"
@@ -59,15 +54,12 @@
         </th:block>
 
 
-        <img  class="img-details" src="/img/test.png" alt="test image"/>
+        <img class="img-details" th:src="|${product.imageUrl}|" alt="productimage"/>
         <div class="caption">
-            <p>
+            <p th:text="${product.description}">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                 labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
+                laboris nisi ut aliquip ex ea commodo consequat.
             </p>
             <h4>
                 <form th:action="@{|~/addToCart/${product.id}|}" method="get">

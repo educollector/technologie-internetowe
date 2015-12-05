@@ -25,21 +25,32 @@
 </head>
 <body>
 
-
-
     <div th:fragment="topNavigation">
         <ul class="nav navbar-nav">
             <li><a th:href="@{~/home}">STRONA GŁÓWNA</a></li>
             <li><a th:href="@{~/regulamin}">REGULAMIN</a></li>
             <li><a th:href="@{~/kontakt}">KONTAKT</a></li>
+            <li>
+                <a th:href="@{~/cartsummary}">
+                    <span class="glyphicon glyphicon-shopping-cart" th:text="|(${itemsCount})|">(12)</span>
+                </a>
+            </li>
         </ul>
     </div>
+
+    <div th:fragment="banner">
+        <div class ="banner">
+            <img id="image-banner" src="/img/banner.png" alt="banenr image"/>
+        </div>
+    </div>
+
+
 
     <div th:fragment="footer">
         <p></p>
         <div class="cardsBox">
             <p></p>
-            <img src="/img/cards.png" all = "cards"/>
+            <img src="/img/cards.jpg" all = "cards"/>
         </div>
         <p></p>
         <p class="copyright text-center">© 2015 WWSI-6380. All Rights Reserved | Created by Alexandra  </p>

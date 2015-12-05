@@ -24,8 +24,8 @@
 
 </head>
 <body>
-    <div class ="banner">
-        <img id="image-banner" src="/img/banner.png" alt="banenr image"/>
+    <div class ="container">
+        <div th:include="wstawki :: banner"/>
     </div>
     <div class ="container">
         <div th:include="wstawki :: topNavigation"/>
@@ -36,13 +36,13 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Jedzenie</h3>
+                <h3 class="panel-title">Produkty</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-6 col-md-4"  th:each="Product : ${productList}">
                         <div class="thumbnail">
-                            <img src="/img/test.png" alt="test image"/>
+                            <img class="image-product" th:src="|${Product.imageUrl}|" alt="test image"/>
                             <div class="caption">
                                 <h4><a th:href="@{'http://localhost:4567/products/'+${Product.id}}"
                                        th:text="${Product.name}">linkDoNazwy</a></h4>
@@ -56,31 +56,6 @@
                 </div>
             </div>
         </div>
-
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Napoje</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-6 col-md-4"  th:each="Product : ${productList}">
-                        <div class="thumbnail">
-                            <img src="/img/test.png" alt="test image"/>
-                            <div class="caption">
-                                <h4><a th:href="@{'http://localhost:4567/products/'+${Product.id}}"
-                                       th:text="${Product.name}">linkDoNazwy</a></h4>
-                                <h4>
-                                    <a class="btn btn-primary" role="button" th:href="@{'http://localhost:4567/products/'+${Product.id}}">Do koszyka</a>
-                                    <a class="btn btn-default" role="button" th:href="@{'http://localhost:4567/products/'+${Product.id}}">Szczegóły</a>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
     </div>
 

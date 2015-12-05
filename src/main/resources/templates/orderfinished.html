@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    <link href="/css/styles.css" rel='stylesheet' type='text/css' />
+    <!--<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />-->
+    <!--&lt;!&ndash; jQuery (necessary for Bootstrap's JavaScript plugins) &ndash;&gt;-->
+    <script src="/js/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+          integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+          crossorigin="anonymous"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"
+          integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX"
+          crossorigin="anonymous"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+            integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+            crossorigin="anonymous"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
+    <script src="/js/formValidationScript.js" ></script>
+
+</head>
+<body>
+    <div class ="container">
+        <button type="button" class="button-cart">
+            <!--<a href="#" ><span class="glyphicon glyphicon-shopping-cart" th:text="${itemsCount}">345</span></a>-->
+        </button>
+    </div>
+    <div class ="container">
+        <div th:include="wstawki :: banner"/>
+    </div>
+    <div class ="container">
+        <div th:include="wstawki :: topNavigation"/>
+    </div>
+
+    <div class ="container">
+        <h3>Przyjęto zamówienia</h3>
+        <p>Proszę sprawdzić e-mail i wykonać płatność.</p>
+    </div>
+
+
+    <div class ="container">
+        <div th:include="wstawki :: footer"/>
+    </div>
+
+</body>
+</html>
